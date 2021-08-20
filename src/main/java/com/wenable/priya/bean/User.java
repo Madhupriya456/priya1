@@ -31,7 +31,5 @@ public class User {
 	public void setTrackId(String trackId) {
 		this.trackId = trackId;
 	}
-	
-	
 
 }

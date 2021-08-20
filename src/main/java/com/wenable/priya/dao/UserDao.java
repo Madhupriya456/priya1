@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.wenable.priya.bean.User;
 
-
 public interface UserDao {
 	
 	User add(User bean);
@@ -20,4 +19,5 @@ public interface UserDao {
 	void deleteById(String id);
 
 	User getByUsernameAndPassword(String username, String password);
+	
 }

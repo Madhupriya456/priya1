@@ -40,11 +40,11 @@ public class UserService {
 			return user;	 
 		}
 	    
-	    public boolean existsByUsername(String username) {
+	  public boolean existsByUsername(String username) {
 			return dao.existsByUsername(username);
 		}
 
-	    public Token getToken(User bean) {
+	  public Token getToken(User bean) {
 		User user = dao.getByUsernameAndPassword(bean.getUsername(), bean.getPassword());
 	
 			Token resp = new Token();

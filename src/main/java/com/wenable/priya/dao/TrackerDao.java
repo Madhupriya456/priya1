@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.wenable.priya.bean.Tracker;
 
-
-
 public interface TrackerDao {
    
 	Tracker add(Tracker bean);
@@ -17,4 +15,5 @@ public interface TrackerDao {
 	void deleteById(String trackId);
 
 	Tracker getByTrackId(String trackId);
+	
 }

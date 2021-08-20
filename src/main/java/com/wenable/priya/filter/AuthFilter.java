@@ -16,7 +16,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.wenable.priya.services.UserService;
 import com.wenable.priya.util.JwtUtil;
 
-
 @Component
 public class AuthFilter extends OncePerRequestFilter{
 	
@@ -29,13 +28,12 @@ public class AuthFilter extends OncePerRequestFilter{
 	UserService service;
 	
 	@Override
-	    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 	    		throws ServletException, IOException 
 	    {
 	    	
 		    String authorization=request.getHeader("Authorization");
-		    
-		   	          
+		    		   	          
 			String url= request.getRequestURI();
 			
 			List<String> exemptedList = new ArrayList<String>();

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wenable.priya.bean.Tracker;
 import com.wenable.priya.services.TrackerService;
 
-
 @RestController
 @RequestMapping("/track")
 public class TrackController {

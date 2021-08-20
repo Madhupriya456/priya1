@@ -28,7 +28,6 @@ public class TrackerService {
 		
 		return dao.getByTrackId(trackId);
 	}	
-
 	
 	public Tracker updateTrack(Tracker bean, String trackId) {
 		
@@ -41,27 +40,16 @@ public class TrackerService {
 				  track.setPlace(bean.getPlace());
 				}
 			
-//			if(bean.getLatitude()!=null)
-//	     		{
-//					track.setLatitude(bean.getLatitude());
-//				}
-//				if(bean.getLongitude()!=null)
-//				{
-//					track.setLongitude(bean.getLongitude());
-//				}
 			if(bean.getLocation()!=null)
 			{
 				track.setLocation(bean.getLocation());
-			}
-				
-		}		
-			return dao.add(track);
+			}			
+		 }		
+		return dao.add(track);
 	}
 	
 	public void delete(String trackId) {
 		dao.deleteById(trackId);		
 	}
-
-	
 
 }

@@ -8,32 +8,17 @@ public class Tracker {
 	
 	@Id
     private String trackId;
-//	private String latitude;
-//	private String longitude;	
 	private String place;
 	private Date time;
-	 
 	private String[] location;
-	
-	
+		
 	public String getTrackId() {
 		return trackId;
 	}
 	public void setTrackId(String trackId) {
 		this.trackId = trackId;
 	}
-//	public String getLatitude() {
-//		return latitude;
-//	}
-//	public void setLatitude(String latitude) {
-//		this.latitude = latitude;
-//	}
-//	public String getLongitude() {
-//		return longitude;
-//	}
-//	public void setLongitude(String longitude) {
-//		this.longitude = longitude;
-//	}
+
 	public String getPlace() {
 		return place;
 	}
@@ -41,7 +26,7 @@ public class Tracker {
 		this.place = place;
 	}
 	public Date getTime() {
-		
+		Date date= new Date();
 		return date;
 	}
 	public void setTime(Date date) {
@@ -54,7 +39,5 @@ public class Tracker {
 	public void setLocation(String[] location) {
 		this.location = location;
 	}
-
-	Date date= new Date();
 
 }
