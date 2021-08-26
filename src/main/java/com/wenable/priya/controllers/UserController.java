@@ -38,40 +38,41 @@ public class UserController {
 	}
 
 	@PostMapping("/login")
-	public ResponseEntity<Token> getJwt(@RequestBody User bean) {
-	return ResponseEntity.ok(service.getToken(bean));
+	public ResponseEntity<Token> getJwt(@RequestBody User bean) 
+	{
+	    return ResponseEntity.ok(service.getToken(bean));
     }
 	
-	 @GetMapping("/all")
-	 public ResponseEntity<List<User>> getUser()
-	  {
-		  List<User> user=service.getAll();
-		  return ResponseEntity.ok(user);
-	  }
+	@GetMapping("/all")
+	public ResponseEntity<List<User>> getUser()
+	 {
+		 List<User> user=service.getAll();
+		 return ResponseEntity.ok(user);
+	 }
 	   
-	 @GetMapping("/user/{id}")
-	 public ResponseEntity<User> getById(@PathVariable String id)
-	   {
+	@GetMapping("/user/{id}")
+	public ResponseEntity<User> getById(@PathVariable String id)
+	  {
 		   User user=service.getById(id);
 		   return ResponseEntity.ok(user);
-	   }
+	  }
 	   
-	  @PostMapping("/{id}")
-	  public ResponseEntity<User> addUserToTrackId(@RequestBody User bean,@PathVariable String id)
+	@PostMapping("/{id}")
+	public ResponseEntity<User> addUserToTrackId(@RequestBody User bean,@PathVariable String id)
 	   {
 		   User user=service.addUserToTrackId(id,bean);
 		   return ResponseEntity.ok(user);
 	   }
 	  
-	  @GetMapping("/{trackId}")
-	  public ResponseEntity<List<User>> getByTrackId(@PathVariable String trackId)
+	@GetMapping("/{trackId}")
+	public ResponseEntity<List<User>> getByTrackId(@PathVariable String trackId)
 	  {
 		  List<User> user=service.getByTrackId(trackId);
 		   return ResponseEntity.ok(user);
 	  }
 	  
-	  @DeleteMapping("/{id}")
-	  public void deleteById(@PathVariable String id)
+	@DeleteMapping("/{id}")
+	public void deleteById(@PathVariable String id)
 	   {
 		   service.deleteById(id);		  
 	   }
@@ -82,4 +83,5 @@ public class UserController {
 		  User user=service.update(id,bean);
 		  return ResponseEntity.ok(user);
 	  }
+	  
 }

@@ -6,6 +6,7 @@ public class User {
 	private String username;
 	private String password;
 	private String trackId;
+	private String message;
 	
 	public String getId() {
 		return id;
@@ -30,6 +31,12 @@ public class User {
 	}
 	public void setTrackId(String trackId) {
 		this.trackId = trackId;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 }

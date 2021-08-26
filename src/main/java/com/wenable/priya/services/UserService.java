@@ -2,11 +2,13 @@ package com.wenable.priya.services;
 
 import java.util.List;
 
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wenable.priya.bean.Token;
 import com.wenable.priya.bean.User;
+import com.wenable.priya.configuration.RabbitMQConfig;
 import com.wenable.priya.dao.UserDao;
 import com.wenable.priya.util.JwtUtil;
 
@@ -18,8 +20,11 @@ public class UserService {
 	
 	@Autowired
 	JwtUtil util;
+	
+	@Autowired
+	RabbitTemplate template;
 
-	 public User add(User bean,boolean wer) throws Exception {
+	public User add(User bean,boolean wer) throws Exception {
 			User user=null;
 			if(bean.getPassword()==null)
 			{
@@ -37,36 +42,36 @@ public class UserService {
 			{
 				user=dao.add(bean);	
 			}
+			template.convertAndSend(RabbitMQConfig.EXCHANGE,RabbitMQConfig.QUEUE,bean.getMessage());
 			return user;	 
 		}
 	    
-	  public boolean existsByUsername(String username) {
+	public boolean existsByUsername(String username) {
 			return dao.existsByUsername(username);
 		}
 
-	  public Token getToken(User bean) {
-		User user = dao.getByUsernameAndPassword(bean.getUsername(), bean.getPassword());
-	
+	public Token getToken(User bean) {
+		User user = dao.getByUsernameAndPassword(bean.getUsername(), bean.getPassword());	
 			Token resp = new Token();
 			if (user == null) {
 				resp.setToken("Please signup first");
 			} else {
 				resp.setToken(util.getToken(user));
 			}
-	
-			return resp;
+	       
+		   return resp;
 		}
 	    	
-	    public List<User> getAll() {
+	public List<User> getAll() {
 			
 			return dao.getAll();
 		}
 	    
-	    public User getById(String id) {		
+	public User getById(String id) {		
 			return dao.getById(id);
 		}
 	    
-		public User addUserToTrackId(String id, User bean) 
+    public User addUserToTrackId(String id, User bean) 
 		{
 		   User user=getById(id);
 		   if(user.getTrackId()!=null)
@@ -80,16 +85,15 @@ public class UserService {
 				return dao.add(user);
 		}
 
-		public List<User> getByTrackId(String trackId) {
-			
+	public List<User> getByTrackId(String trackId) {			
 			return dao.getByTrackId(trackId);
 		}
 
-		public void deleteById(String id) {
+	public void deleteById(String id) {
 			dao.deleteById(id);	
 		}
 
-		public User update(String id, User bean) {
+	public User update(String id, User bean) {
 			User user=getById(id);
 			if(user!=null)
 			{
@@ -100,5 +104,5 @@ public class UserService {
 			}
 			return dao.add(user);			
 		}
-		
+
 }

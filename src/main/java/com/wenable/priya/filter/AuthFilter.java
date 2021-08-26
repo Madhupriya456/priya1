@@ -19,7 +19,7 @@ import com.wenable.priya.util.JwtUtil;
 @Component
 public class AuthFilter extends OncePerRequestFilter{
 	
-	private static final String SECRET_TOKEN = "eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2Mjk0NDg3NzIsInVzZXJJZCI6IjYxMWY1YmIyZTc4YjhhMTExMDk4YjdlZCIsImlhdCI6MTYyOTQ0NTE3MiwidXNlcm5hbWUiOiJtYWRodSJ9.7PwdO5Z8-d_ELU3G22eV_qqgqAeL57PYk2y5vY5vE3O5Cunde90UtyuFtCTrhz-5d6kdBgpLJ-vN9ZTJbs24CQ";
+	private static final String SECRET_TOKEN ="eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2Mjk3OTIxMjgsInVzZXJJZCI6IjYxMjQ4ZGNmNDFhMTE2NTNhM2EyZDBlOSIsImlhdCI6MTYyOTc4ODUyOCwidXNlcm5hbWUiOiJtaWtlIn0.YuuKeCg-M05pthKQz_N9GrnZM4at2c-OqY4H3KNaEpvPbOxi-cIkA1StrHWW0-X96Gnrlod7X97AMC6gPm5iYA";
 
 	@Autowired
 	JwtUtil util;
@@ -42,8 +42,7 @@ public class AuthFilter extends OncePerRequestFilter{
 			exemptedList .add("/images");
 			exemptedList .add("/v2");
 			exemptedList .add("/csrf");
-			exemptedList .add("/key");
-			exemptedList .add("/signup");
+		    exemptedList .add("/signup");
 			exemptedList .add("/login");
 			
      		boolean isListallowed=false;
@@ -54,14 +53,15 @@ public class AuthFilter extends OncePerRequestFilter{
 					isListallowed = true;
 				}
 			}
+			
 	    	if(isListallowed)
 	    	{
 	    		filterChain.doFilter(request, response);
 	    		response.getStatus();
 	    	}
+	    	
 	    	else
-	    	{    	
-	    		
+	    	{    		    		
 				if(authorization.equals(SECRET_TOKEN))
 	    		{
 	    			filterChain.doFilter(request, response);

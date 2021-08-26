@@ -9,10 +9,8 @@ import com.wenable.priya.bean.Tracker;
 import com.wenable.priya.dao.TrackerDao;
 import com.wenable.priya.dao.repositories.TrackerRepository;
 
-
 @Repository
 public class TrackerDaoImpl implements TrackerDao{
-
 
 	@Autowired
 	TrackerRepository repo;

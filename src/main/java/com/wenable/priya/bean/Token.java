@@ -1,13 +1,16 @@
 package com.wenable.priya.bean;
 
-public class Token {
+public class Token 
+{
     private String token;
 
-	public String getToken() {
+	public String getToken() 
+	{
 		return token;
 	}
 
-	public void setToken(String token) {
+	public void setToken(String token) 
+	{
 		this.token = token;
 	}
 }
