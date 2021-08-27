@@ -100,7 +100,11 @@ public class UserService {
 				if(bean.getPassword()!=null)
 				{
 					user.setPassword(bean.getPassword());
-				}				
+				}
+				if(bean.getMessage()!=null)
+				{
+					user.setMessage(bean.getMessage());
+				}
 			}
 			return dao.add(user);			
 		}
